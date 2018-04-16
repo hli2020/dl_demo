@@ -81,10 +81,14 @@ class classifier():
             for i, (images, labels) in enumerate(self.train_loader):  
                 # Convert torch tensor to Variable
                 labels_onehot = torch.zeros([labels.size(0), self.num_classes])
-                labels_onehot.scatter_(1, labels.unsqueeze(1), 1)  
-                images = Variable(images).cuda()
-                labels = Variable(labels).cuda()
-                labels_onehot = Variable(labels_onehot).cuda()
+                labels_onehot.scatter_(1, labels.unsqueeze(1), 1)
+                # TODO: gpu based
+                # images = Variable(images).cuda()
+                # labels = Variable(labels).cuda()
+                # labels_onehot = Variable(labels_onehot).cuda()
+                images = Variable(images)
+                labels = Variable(labels)
+                labels_onehot = Variable(labels_onehot)
                 out = images
                 # Forward + Backward + Optimize
                 for (optimizer, forward) in zip(self.net.optimizers, self.net.forwards):
@@ -96,13 +100,14 @@ class classifier():
                 # Forward + Backward + Optimize
                 loss, grad_loss = self.optimizer_dni_module(images, labels, labels_onehot, 
                                           self.net.grad_optimizer, self.net.optimizer, self.net)
-                
-                if (i+1) % 100 == 0:
+
+                # show training loss
+                if (i+1) % 10 == 0:
                     print('Epoch [%d/%d], Step [%d/%d], Loss: %.4f, Grad Loss: %.4f' %
                           (epoch+1, self.num_epochs, i+1, self.num_train//self.batch_size,
                            loss.data[0], grad_loss.data[0]))
 
-            # show test result
+            # save test result
             if (epoch+1) % 10 == 0:
                 perf = self.test_model(epoch+1)    
                 if perf > self.best_perf:
