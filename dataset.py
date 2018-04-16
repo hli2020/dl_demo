@@ -6,8 +6,8 @@ import torchvision.transforms as transforms
 class mnist():
 
     def __init__(self, args):
-        root_data = '~/project/ssd.pytorch/data'   # for local pc, gpu
-        # root_data = '~/Project/ssd.pytorch/data'   # for mac
+        # root_data = '~/project/ssd.pytorch/data'   # for local pc, gpu
+        root_data = '/Users/hyli/Project/ssd.pytorch/data'   # for mac
 
         # MNIST Dataset 
         train_dataset = dsets.MNIST(root=root_data,
