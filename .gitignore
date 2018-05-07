@@ -1,3 +1,7 @@
 .ipynb_checkpoints/
 .idea/
 __pycache__/
+summer_high_school/.idea
+*.DS_Store
+*.jpeg
+*.jpg
