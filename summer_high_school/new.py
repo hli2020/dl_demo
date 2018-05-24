@@ -4,7 +4,7 @@ import os
 import time
 import math
 
-
+# this is the prediction definition
 def predict(model, input):
     response = model.predict([input])
 
@@ -21,11 +21,6 @@ def predict(model, input):
     print('\tlabel: {}, confidence: {:.5f}, prediction: {}\n'.format(input_label, pred_conf, show))
     return pred_res
 
-
-# # add multiple images with concepts
-# img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'],
-#                not_concepts=['our_wedding'], allow_dup_url=False)
-# app.inputs.bulk_create_images([img1])
 
 # STUDENTS CHANGE HERE
 train_folder = 'summer_high_school/train'
@@ -46,6 +41,8 @@ app = ClarifaiApp(api_key=api_key)
 avg_num_per_cls = math.floor(train_data_cnt/len(concepts_list)) if train_data_cnt > 0 else 10e10
 train_im_list, test_im_list = [], []
 train_list, test_list, train_cnt = [], [], 0
+
+# loop for training images
 for cls in concepts_list:
     for (_, _, filenames) in os.walk(os.path.join(train_folder, cls)):
         for file in filenames:
@@ -55,6 +52,7 @@ for cls in concepts_list:
             curr_im = os.path.join(train_folder, cls, file)
             train_im_list.append(ClImage(file_obj=open(curr_im, 'rb'), concepts=[cls]))
 
+# loop for test images
 for cls in concepts_list:
     for (_, _, filenames) in os.walk(os.path.join(test_folder, cls)):
         for file in filenames:
@@ -66,6 +64,7 @@ app.inputs.bulk_create_images(train_im_list)
 
 
 # MODEL
+# create the model via API
 if not app.models.search(model_id):
     print('create the model ...')
     model = app.models.create(model_id, concepts=concepts_list)
@@ -74,13 +73,15 @@ print('fetch the model ...')
 model = app.models.get(model_id)
 print('train the model ...')
 t = time.time()
-model.train()              # the core part
+
+# this is the core part where the model is trained
+model.train()
 train_t = time.time() -t
 # model.get_info(verbose=True)
 # model.get_inputs()
 print('Done training! takes {:.4f} seconds ...'.format(train_t))
 
-# PREDICT
+# PREDICT using the prediction function defined above
 cnt, correct_cnt = 0., 0.
 print('prediction result:')
 for im in test_im_list:
