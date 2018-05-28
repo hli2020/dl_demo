@@ -4,7 +4,9 @@ import os
 import time
 import math
 
+##############################################################################
 # this is the prediction definition
+##############################################################################
 def predict(model, input):
     response = model.predict([input])
 
@@ -22,12 +24,16 @@ def predict(model, input):
     return pred_res
 
 
+##############################################################################
 # STUDENTS CHANGE HERE
+##############################################################################
 train_folder = 'summer_high_school/train'
 test_folder = 'summer_high_school/test'
 api_key = 'ad04791d94504bc082ac425d37463efe'
 concepts_list = ['house', 'lake']
 model_id = 'my_model'
+
+# DEFAULT SETTING(no need to change)
 threshold = .3
 train_data_cnt = -1  # set to -1 if use all training data; otherwise indicate a positive number here
 
@@ -35,7 +41,9 @@ train_data_cnt = -1  # set to -1 if use all training data; otherwise indicate a 
 app = ClarifaiApp(api_key=api_key)
 
 
+##############################################################################
 # DATA LOADING
+##############################################################################
 # app.inputs.delete_all()
 # app.models.delete_all()
 avg_num_per_cls = math.floor(train_data_cnt/len(concepts_list)) if train_data_cnt > 0 else 10e10
@@ -63,7 +71,9 @@ print('uploading images to Cloud')
 app.inputs.bulk_create_images(train_im_list)
 
 
-# MODEL
+##############################################################################
+# CREATE MODEL via API
+##############################################################################
 # create the model via API
 if not app.models.search(model_id):
     print('create the model ...')
@@ -81,7 +91,9 @@ train_t = time.time() -t
 # model.get_inputs()
 print('Done training! takes {:.4f} seconds ...'.format(train_t))
 
-# PREDICT using the prediction function defined above
+##############################################################################
+# # PREDICT using the prediction function defined above
+##############################################################################
 cnt, correct_cnt = 0., 0.
 print('prediction result:')
 for im in test_im_list:
