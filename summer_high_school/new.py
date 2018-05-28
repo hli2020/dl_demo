@@ -26,8 +26,11 @@ def predict(model, input):
 train_folder = 'summer_high_school/train'
 test_folder = 'summer_high_school/test'
 api_key = 'ad04791d94504bc082ac425d37463efe'
+# instert all the concept(lable/folder name) below
 concepts_list = ['house', 'lake']
+# define your model name
 model_id = 'my_model'
+# put a threshold to classify correct/wrong objects
 threshold = .3
 train_data_cnt = -1  # set to -1 if use all training data; otherwise indicate a positive number here
 
@@ -82,6 +85,7 @@ train_t = time.time() -t
 print('Done training! takes {:.4f} seconds ...'.format(train_t))
 
 # PREDICT using the prediction function defined above
+# To Frankie alone: THIS IS THE EVALUATION PART THAT EVERY STUDENT HAS.
 cnt, correct_cnt = 0., 0.
 print('prediction result:')
 for im in test_im_list:
