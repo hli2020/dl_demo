@@ -1,7 +1,6 @@
 import torch
-from ..model import *
+from .model import *
 from torch.autograd import Variable
-
 from synthetic_grad.plot import *
 
 
