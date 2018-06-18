@@ -1,5 +1,4 @@
-import torch.nn as nn
-from dni import *
+from synthetic_grad.dni import *
 
 
 # CNN Model (2 conv layer)

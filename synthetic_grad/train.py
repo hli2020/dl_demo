@@ -1,7 +1,8 @@
-from model import *
-from plot import *
 import torch
+from ..model import *
 from torch.autograd import Variable
+
+from synthetic_grad.plot import *
 
 
 class classifier():

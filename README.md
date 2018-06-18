@@ -1,2 +1,2 @@
-# alexnet-syngrad-pytorch
-Code and demos for AlexNet and synthetic gradients
+# Deep learning projects on the road
+Code and demos for multiple deep learning projects
