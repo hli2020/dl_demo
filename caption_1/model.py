@@ -37,7 +37,7 @@ class EncoderCNN(nn.Module):
         """Extract feature vectors from input images."""
         # with torch.no_grad():
         #     features = self.resnet(images)
-
+        # TODO: discuss volatile, detach, reguires_grad with new 0.4 here
         # images.volatile = True
         # res_features = self.resnet(images).detach()
         res_features = self.resnet(images)
