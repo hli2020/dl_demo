@@ -7,6 +7,7 @@ def resize_image(image, size):
     """Resize an image to the given size."""
     return image.resize(size, Image.ANTIALIAS)
 
+
 def resize_images(image_dir, output_dir, size):
     """Resize the images in 'image_dir' and save into 'output_dir'."""
     if not os.path.exists(output_dir):
@@ -20,15 +21,15 @@ def resize_images(image_dir, output_dir, size):
                 img = resize_image(img, size)
                 img.save(os.path.join(output_dir, image), img.format)
         if (i+1) % 100 == 0:
-            print ("[{}/{}] Resized the images and saved into '{}'."
-                   .format(i+1, num_images, output_dir))
+            print("[{}/{}] Resized the images and saved into '{}'."
+                  .format(i+1, num_images, output_dir))
+
 
 def main(args):
     image_dir = args.image_dir
     output_dir = args.output_dir
     image_size = [args.image_size, args.image_size]
     resize_images(image_dir, output_dir, image_size)
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

@@ -1,11 +1,12 @@
 data/
 .ipynb_checkpoints/
-.idea/
+*.idea/
 __pycache__/
-summer_high_school/.idea
 *.DS_Store
 *.jpeg
 *.jpg
-
+*.pkl
+*.pth
+*.ckpt
 caption_1/cap_data
 caption_1/cache

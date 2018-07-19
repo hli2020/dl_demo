@@ -6,7 +6,7 @@ In this tutorial, we used [resnet-152](https://arxiv.org/abs/1512.03385) model p
 [ILSVRC-2012-CLS](http://www.image-net.org/challenges/LSVRC/2012/) image classification dataset.
 The decoder is a long short-term memory (LSTM) network.
 
-![alt text](png/model.png)
+![alt text](caption_1/model.png)
 
 #### Training phase
 For the encoder part, the pretrained CNN extracts the feature vector from a given input image.

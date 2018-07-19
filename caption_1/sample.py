@@ -13,6 +13,7 @@ from PIL import Image
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+
 def load_image(image_path, transform=None):
     image = Image.open(image_path)
     image = image.resize([224, 224], Image.LANCZOS)
@@ -21,6 +22,7 @@ def load_image(image_path, transform=None):
         image = transform(image).unsqueeze(0)
     
     return image
+
 
 def main(args):
     # Image preprocessing
