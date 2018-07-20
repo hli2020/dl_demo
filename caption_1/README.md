@@ -28,7 +28,9 @@ In the test phase, the LSTM decoder can't see the image description.
 To deal with this problem, the LSTM decoder feeds back the previosly generated word to the next input.
 This can be implemented using a [for-loop](https://github.com/yunjey/pytorch-tutorial/blob/master/tutorials/03-advanced/image_captioning/model.py#L48).
 
-The original repo is from [here](https://github.com/yunjey/pytorch-tutorial/tree/master/tutorials/03-advanced/image_captioning).
+
+Instructor note:
+The **original** repo is from [here](https://github.com/yunjey/pytorch-tutorial/tree/master/tutorials/03-advanced/image_captioning).
 
 ## Usage
 
@@ -50,7 +52,7 @@ $ nltk.download()
 
 ```bash
 $ python build_vocab.py   
-$ python resize.py
+# python resize.py
 ```
 
 #### 3. Train the model
