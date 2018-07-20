@@ -48,6 +48,9 @@ $ import nltk
 $ nltk.download()
 ```
 
+Download the COCO image captioning dataset, follow instructions
+[here](https://github.com/yunjey/pytorch-tutorial/tree/master/tutorials/03-advanced/image_captioning#2-download-the-dataset).
+
 #### 2. Preprocessing
 
 ```bash

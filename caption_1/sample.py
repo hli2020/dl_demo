@@ -10,6 +10,7 @@ from model import EncoderCNN, DecoderRNN
 from PIL import Image
 
 
+# Note: this test file is based on pytorch 0.4
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
