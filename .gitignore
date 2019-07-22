@@ -1,5 +1,6 @@
 *.h5
 data/
+mnist_data/
 .ipynb_checkpoints/
 *.idea/
 __pycache__/
