@@ -6,6 +6,7 @@ mnist_data/
 __pycache__/
 *.DS_Store
 *.jpeg
+*.gif
 *.jpg
 *.pkl
 *.pth
