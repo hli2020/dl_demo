@@ -10,8 +10,10 @@ from model import EncoderCNN, DecoderRNN
 from PIL import Image
 
 
+# Note: this test file is based on pytorch 0.4
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
 
 def load_image(image_path, transform=None):
     image = Image.open(image_path)
@@ -21,6 +23,7 @@ def load_image(image_path, transform=None):
         image = transform(image).unsqueeze(0)
     
     return image
+
 
 def main(args):
     # Image preprocessing

@@ -6,7 +6,7 @@ In this tutorial, we used [resnet-152](https://arxiv.org/abs/1512.03385) model p
 [ILSVRC-2012-CLS](http://www.image-net.org/challenges/LSVRC/2012/) image classification dataset.
 The decoder is a long short-term memory (LSTM) network.
 
-![alt text](png/model.png)
+![alt text](model.png)
 
 #### Training phase
 For the encoder part, the pretrained CNN extracts the feature vector from a given input image.
@@ -28,7 +28,9 @@ In the test phase, the LSTM decoder can't see the image description.
 To deal with this problem, the LSTM decoder feeds back the previosly generated word to the next input.
 This can be implemented using a [for-loop](https://github.com/yunjey/pytorch-tutorial/blob/master/tutorials/03-advanced/image_captioning/model.py#L48).
 
-The original repo is from [here](https://github.com/yunjey/pytorch-tutorial/tree/master/tutorials/03-advanced/image_captioning).
+
+Instructor note:
+The **original** repo is from [here](https://github.com/yunjey/pytorch-tutorial/tree/master/tutorials/03-advanced/image_captioning).
 
 ## Usage
 
@@ -46,11 +48,14 @@ $ import nltk
 $ nltk.download()
 ```
 
+Download the COCO image captioning dataset, follow instructions
+[here](https://github.com/yunjey/pytorch-tutorial/tree/master/tutorials/03-advanced/image_captioning#2-download-the-dataset).
+
 #### 2. Preprocessing
 
 ```bash
 $ python build_vocab.py   
-$ python resize.py
+# python resize.py
 ```
 
 #### 3. Train the model
